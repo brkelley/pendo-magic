@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>pendo-magic testing</title>
+</head>
+
+<body>
+    <header>
+        <h1>test site /foo.html</h1>
+        <p>This is page foo on test site</p>
+    </header>
+    <main>
+        <h3>things it does</h3>
+        <p>mostly testing stuff</p>
+        <p>or go to
+            <a href="index.html">index</a>
+        </p>
+    </main>
+    <hr />
+    <footer>
+        <p>this is the footer</p>
+    </footer>
+    <script>
+        (function(apiKey) {
+            (function(p,e,n,d,o) {
+                var v,w,x,y,z; o=p[d]=p[d]||{}; o._q=[];
+                v=['initialize','identify','updateOptions','pageLoad']; for(w=0,x=v.length;w<x;++w)(function(m) {
+                    o[m]=o[m]||function() {o._q[m===v[0]? 'unshift':'push']([m].concat([].slice.call(arguments,0)));};
+                })(v[w]);
+                y=e.createElement(n); y.async=!0; y.src='https://pendo-magic-static.storage.googleapis.com/agent/static/'+apiKey+'/pendo.js';
+                z=e.getElementsByTagName(n)[0]; z.parentNode.insertBefore(y,z);
+            })(window,document,'script','pendo');
+
+            // Call this whenever information about your visitors becomes available
+            // Please use Strings, Numbers, or Bools for value types.
+            pendo.initialize({
+                visitor: {
+                    id: 'VISITOR-UNIQUE-ID'   // Required if user is logged in
+                    // email:        // Optional
+                    // role:         // Optional
+
+                    // You can add any additional visitor level key-values here,
+                    // as long as it's not one of the above reserved names.
+                },
+
+                account: {
+                    id: 'ACCOUNT-UNIQUE-ID' // Highly recommended
+                    // name:         // Optional
+                    // planLevel:    // Optional
+                    // planPrice:    // Optional
+                    // creationDate: // Optional
+
+                    // You can add any additional account level key-values here,
+                    // as long as it's not one of the above reserved names.
+                }
+            });
+        })('6363862c-cb6b-4c59-419e-2df2418a9935');
+    </script>
+</body>
+
+</html>
