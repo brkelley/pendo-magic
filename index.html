@@ -50,6 +50,16 @@
         </ul>
         <button>Click me!</button>
         <script>
+            const config = (window.location.search || '')
+                .slice(1)
+                .split('&')
+                .map(kv => kv.split('='))
+                .filter(([key, value]) => !!key && !!value)
+                .reduce((memo, [key, value]) => ({...memo, [key]: value}), {
+                    user: 'test@brkelley.com',
+                    account: 'brkelley'
+                });
+
             (function(apiKey) {
                 (function(p,e,n,d,o) {
                     var v,w,x,y,z; o=p[d]=p[d]||{}; o._q=[];
@@ -65,23 +75,10 @@
                 pendo.initialize({
                     apiKey: apiKey,
                     visitor: {
-                        // id: ''   // Required if user is logged in
-                        // email:        // Optional
-                        // role:         // Optional
-
-                        // You can add any additional visitor level key-values here,
-                        // as long as it's not one of the above reserved names.
+                        id: config.user
                     },
-
                     account: {
-                        id: 'brkelley' // Highly recommended
-                        // name:         // Optional
-                        // planLevel:    // Optional
-                        // planPrice:    // Optional
-                        // creationDate: // Optional
-
-                        // You can add any additional account level key-values here,
-                        // as long as it's not one of the above reserved names.
+                        id: config.account
                     }
                 });
             })('73ec49b8-6cb1-4236-5508-161de27ea732');
